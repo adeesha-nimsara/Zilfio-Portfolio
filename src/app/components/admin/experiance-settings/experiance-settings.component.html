@@ -1,0 +1,10 @@
+<button type="button" (click)="changeLink()" [class.rotate-45]="rotate"
+    class="fixed bottom-2 right-2 text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-full text-sm p-5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700">
+    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+        viewBox="0 0 18 18">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 1v16M1 9h16" />
+    </svg>
+    <span class="sr-only">Icon description</span>
+</button>
+<router-outlet></router-outlet>

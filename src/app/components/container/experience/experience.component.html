@@ -1,0 +1,62 @@
+<div class="flex justify-center py-5">
+    <div class="flex flex-col">
+        <div class="basis-12/12">
+            <h2
+                class="bg-emerald-400 bg-opacity-30 rounded-full p-2 px-10 dark:text-white text-opacity-100 text-base antialiased">
+                Experience</h2>
+        </div>
+    </div>
+</div>
+
+<!-- <a href="#"
+    class="flex flex-col items-center bg-white rounded-lg shadow-xl md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <div class="flex flex-row self-start basis-4/12">
+        <img class="object-cover rounded-t-lg px-5"
+            src="https://qph.cf2.quoracdn.net/main-qimg-e9b3c640b2fda8875065c7cfd0854d24" alt="" width="150">
+    </div>
+    <div class="flex flex-col justify-between p-4 leading-normal w-full">
+        <div class="flex flex-col sm:flex-row justify-between">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Jr. FrontEnd Developer</h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 whitespace-nowrap">Nov 2021 - present</p>
+        </div>
+        <div class="flex flex-row">
+            <span class="mb-3 font-normal text-gray-700 dark:text-gray-300 whitespace-nowrap border-r-2 border-gray-300 pe-3">Full Time</span>
+            <span class="mb-3 font-normal text-gray-700 dark:text-gray-300 whitespace-nowrap ps-3">Remote</span>
+        </div>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <br>
+        </p>
+    </div>
+</a> -->
+
+<section class="bg-white dark:bg-gray-900">
+    <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5" *ngFor="let data of experianceData | async">
+        <a
+            class="flex flex-col items-center bg-white rounded-lg shadow-xl md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <div class="flex flex-row self-start basis-4/12">
+                <img class="object-cover rounded-t-lg p-5 pt-4"
+                [src]="sanitizeUrl(data.imageUrl)" alt="" width="150">
+            </div>
+            <div class="flex flex-col justify-between p-4 leading-normal w-full">
+                <div class="flex flex-col sm:flex-row justify-between">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{data.job_title}}</h5>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 whitespace-nowrap">{{data.start_date}} - {{data.end_date}}
+                    </p>
+                </div>
+                <div class="flex flex-row">
+                    <span
+                        class="mb-3 font-normal text-gray-700 dark:text-gray-300 whitespace-nowrap border-r-2 border-gray-300 pe-3">{{data.employment_type}}</span>
+                    <span class="mb-3 font-normal text-gray-700 dark:text-gray-300 whitespace-nowrap ps-3">{{data.employment_location}}</span>
+                </div>
+                <div class="mb-3 font-normal text-gray-700 dark:text-gray-400" [innerHTML]="data.description"></div>
+            </div>
+        </a>
+    </div>
+</section>

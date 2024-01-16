@@ -1,0 +1,64 @@
+#checkbox 
+  position: relative
+  appearance: none
+  outline: none
+  width: 40px
+  height: 22px
+  border-radius: 20px
+  background-color: #131e3b
+  box-shadow: 0px 8px 12px 0px rgba(9, 30, 66, 0.15)
+  box-shadow: none
+  cursor: pointer
+  overflow: hidden
+  transition: 0.3s ease-in-out
+
+#checkbox:checked 
+  background-color: white
+  background-image: url('/assets/images/header/moon-stars-fill.svg')
+  background-repeat: no-repeat
+  background-position: 4px 4px
+  background-size: 14px
+  box-shadow: rgb(0, 0, 0) 0px 0px 10px 0px
+
+  &::before,
+  &::after
+    content: ""
+    position: absolute
+    width: 10px
+    height: 2px
+    border-radius: 50%
+    transform: translate(-50%, -50%)
+    background-color: #131e3b
+
+  &::before
+    width: 1px
+    height: 1px
+    top: 50%
+    left: 75%
+    animation: stars 3s linear infinite
+
+  &::after
+    width: 2px
+    height: 2px
+    top: 30%
+    left: 50%
+    animation: stars 4s linear infinite
+
+  @keyframes stars
+    0%
+      transform: translate(-50%, -50%) scale(1)
+      opacity: 0
+    50%
+      transform: translate(-50%, -50%) scale(1.5)
+      opacity: 1
+    100%
+      transform: translate(-50%, -50%) scale(1)
+      opacity: 0
+
+#checkbox:not(:checked) 
+  background-color: #212529
+  background-image: url('/assets/images/header/sun-fill.svg')
+  background-repeat: no-repeat
+  background-position: 20px 3px
+  background-size: 14px
+  box-shadow: rgb(31, 41, 55) 0px 0px 10px 0px

@@ -1,0 +1,39 @@
+<section class="bg-white dark:bg-gray-900">
+    <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5"
+        *ngFor="let data of experianceData | async">
+        <div class="flex justify-end px-4 pt-4">
+            <button id="dropdownButton" (click)="deleteExperianceData(data.id)"
+                class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+                type="button">
+                <span class="sr-only">Open dropdown</span>
+                <svg class="w-6 h-6 text-gray-800 dark:text-red-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="none" viewBox="0 0 18 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
+                </svg>
+            </button>
+        </div>
+        <a
+            class="flex flex-col items-center bg-white rounded-lg shadow-xl md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <div class="flex flex-row self-start basis-4/12">
+                <img class="object-cover rounded-t-lg px-5" [src]="sanitizeUrl(data.imageUrl)" alt="" width="150">
+            </div>
+            <div class="flex flex-col justify-between p-4 leading-normal w-full">
+                <div class="flex flex-col sm:flex-row justify-between">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{data.job_title}}
+                    </h5>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 whitespace-nowrap">{{data.start_date}} -
+                        {{data.end_date}}
+                    </p>
+                </div>
+                <div class="flex flex-row">
+                    <span
+                        class="mb-3 font-normal text-gray-700 dark:text-gray-300 whitespace-nowrap border-r-2 border-gray-300 pe-3">{{data.employment_type}}</span>
+                    <span
+                        class="mb-3 font-normal text-gray-700 dark:text-gray-300 whitespace-nowrap ps-3">{{data.employment_location}}</span>
+                </div>
+                <div class="mb-3 font-normal text-gray-700 dark:text-gray-400" [innerHTML]="data.description"></div>
+            </div>
+        </a>
+    </div>
+</section>

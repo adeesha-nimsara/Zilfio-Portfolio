@@ -1,0 +1,86 @@
+<section class="bg-white dark:bg-gray-900">
+    <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5"
+        *ngFor="let data of projectData | async">
+        <a
+            class="flex flex-col items-center bg-white rounded-lg shadow-xl md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <div class="flex self-start basis-6/12 h-96 bg-gray-100 dark:bg-gray-700">
+                <img class="object-cover rounded p-4 w-full" [src]="sanitizeUrl(data.image_url)" alt="" width="">
+            </div>
+            <div class="flex flex-col content-start p-4 leading-normal w-full basis-6/12 dark:bg-gray-800 h-96">
+                <div class="flex flex-row-reverse">
+                    <button id="deletebutton" (click)="deleteData(data.id)"
+                        class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+                        type="button">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-red-500" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex flex-col">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{data.name}}
+                        </h5>
+                    </div>
+                    <div class="mb-3 font-normal text-gray-700 dark:text-gray-400" [innerHTML]="data.description">
+                    </div>
+                    <div class="flex flex-wrap">
+                        <div class="dark:bg-emerald-200 bg-emerald-300 me-3 mb-3 py-2 px-5 rounded-xl dark:bg-opacity-10"
+                            *ngFor="let tags of data.tags; let last = last">
+                            <span class="dark:text-white text-black text-opacity-80">
+                                {{ tags }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex py-5">
+                        <a [href]="sanitizeUrl(data.project_url)">
+                            <svg class="w-6 h-6 text-gray-800 text-opacity-70 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+<button type="button" id="modal-button" (click)="toggleModal()"
+    class="fixed bottom-2 right-2 text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-full text-sm p-5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700">
+    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+        viewBox="0 0 18 18">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 1v16M1 9h16" />
+    </svg>
+    <span class="sr-only">Icon description</span>
+</button>
+<!-- add new modal -->
+<div id="crud-modal" tabindex="-1" aria-hidden="true"
+    class="overflow-y-auto bg-gray-800 bg-opacity-50 overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full hidden">
+    <div class="relative p-4 w-full max-w-3xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 ">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    Create New Project
+                </h3>
+                <button type="button"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    (click)="hideModal()">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <app-add-new-project></app-add-new-project>
+        </div>
+    </div>
+</div>
+<p>projects-settings works!</p>

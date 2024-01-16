@@ -1,0 +1,46 @@
+<div class="flex justify-center py-5">
+    <div class="flex flex-col">
+        <div class="basis-12/12">
+            <h2
+                class="bg-emerald-400 bg-opacity-30 rounded-full p-2 px-10 dark:text-white text-opacity-100 text-base antialiased">
+                Projects</h2>
+        </div>
+    </div>
+</div>
+
+<section class="bg-white dark:bg-gray-900">
+    <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5"
+        *ngFor="let data of projectData | async">
+        <a
+            class="flex flex-col items-center bg-white rounded-lg shadow-xl md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <div class="flex self-start basis-6/12 h-96 bg-gray-100 dark:bg-gray-700">
+                <img class="object-cover rounded p-4 w-full" [src]="sanitizeUrl(data.image_url)" alt="" width="">
+            </div>
+            <div class="flex flex-col justify-center p-4 leading-normal w-full basis-6/12 dark:bg-gray-800 h-96">
+                <div class="flex flex-col">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{data.name}}</h5>
+                </div>
+                <div class="mb-3 font-normal text-gray-700 dark:text-gray-400" [innerHTML]="data.description">
+                </div>
+                <div class="flex flex-wrap">
+                    <div class="dark:bg-emerald-200 bg-emerald-300 me-3 mb-3 py-2 px-5 rounded-xl dark:bg-opacity-10"
+                        *ngFor="let tool of data.tools; let last = last">
+                        <span class="dark:text-white text-black text-opacity-80">
+                            {{ tool }}
+                        </span>
+                    </div>
+
+                </div>
+                <div class="flex py-5">
+                    <a [href]="sanitizeUrl(data.project_url)">
+                        <svg class="w-6 h-6 text-gray-800 text-opacity-70 dark:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
