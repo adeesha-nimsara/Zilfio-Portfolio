@@ -1,5 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Auth, GoogleAuthProvider, getRedirectResult, signInAnonymously, signInWithRedirect } from '@angular/fire/auth'
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,9 @@ import { Auth, GoogleAuthProvider, getRedirectResult, signInAnonymously, signInW
 export class LoginComponent {
 
   constructor(
-    private auth: Auth
+    private auth: Auth,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   googleProvider = new GoogleAuthProvider()
@@ -19,6 +23,7 @@ export class LoginComponent {
       if (!result) return;
       if (result.user.email === 'adeeshabigunnimsara@gmail.com') {
         console.log('admin')
+        this.router.navigate(['/admin'])
       } else {
         console.log('Not a Admin')
       }
@@ -26,10 +31,12 @@ export class LoginComponent {
   }
 
   guestLogin() {
-    signInAnonymously(this.auth)
+    this.authService.guestLoginService()
   }
 
   googleLogin() {
-    signInWithRedirect(this.auth, this.googleProvider)
+    this.authService.googleLoginService()
   }
+
+
 }
