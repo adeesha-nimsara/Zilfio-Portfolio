@@ -10,7 +10,7 @@ export class AuthService {
   googleProvider = new GoogleAuthProvider()
 
   getUser() {
-    return this.auth.currentUser
+    return this.auth.currentUser?.email
   }
 
   guestLoginService() {

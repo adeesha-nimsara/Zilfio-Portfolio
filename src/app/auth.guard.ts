@@ -23,10 +23,10 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree
     | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree> {
+    | Promise<boolean | UrlTree> {s
     return this.authService.getUser().pipe(
       map((user) => {
-        if (user && user.email === 'adeeshabigunnimsara@gmail.com') {
+        if (user === 'adeeshabigunnimsara@gmail.com') {
           return true; // Allow access
         } else {
           // Redirect to login or unauthorized page
