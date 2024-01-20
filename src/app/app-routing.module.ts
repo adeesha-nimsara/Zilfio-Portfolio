@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, mapToCanActivate } from '@angular/router';
 import { AdminComponent } from './components//admin/admin.component';
 import { LandingComponent } from './components/container/landing/landing.component';
 import { LandingSettingsComponent } from './components/admin/landing-settings/landing-settings.component';
@@ -11,37 +11,40 @@ import { AddNewExperianceComponent } from './components/admin/experiance-setting
 import { AllExperianceComponent } from './components/admin/experiance-settings/all-experiance/all-experiance.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { authGuard } from './auth/auth.guard';
 
 const routes: Routes = [{
   path: 'admin',
   component: AdminComponent,
-  children:[{
+  canActivate: [authGuard],
+  children: [{
     path: 'dashboard',
     component: DashboardComponent
-  },{
+  }, {
     path: 'landing',
     component: LandingSettingsComponent,
-  },{
+  }, {
     path: 'about',
     component: AboutSettingsComponent,
-  },{
+  }, {
     path: 'skills',
     component: SkillsSettingsComponent,
-  },{
+  }, {
     path: 'experiance',
     component: ExperianceSettingsComponent,
     children: [{
       path: 'add-new-experiance',
       component: AddNewExperianceComponent
-    },{
+    }, {
       path: 'all-experiance',
       component: AllExperianceComponent
     }]
-  },{
+  }, {
     path: 'projects',
     component: ProjectsSettingsComponent
   }
-]},
+  ],
+},
 {
   path: 'login',
   component: LoginComponent,

@@ -26,7 +26,7 @@ export class LoginComponent {
         this.router.navigate(['/admin'])
       } else {
         console.log('Not a Admin')
-      }
+      } 
     })
   }
 
