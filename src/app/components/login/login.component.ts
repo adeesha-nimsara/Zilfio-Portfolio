@@ -18,18 +18,6 @@ export class LoginComponent {
 
   googleProvider = new GoogleAuthProvider()
 
-  ngOnInit() {
-    getRedirectResult(this.auth).then((result) => {
-      if (!result) return;
-      if (result.user.email === 'adeeshabigunnimsara@gmail.com') {
-        console.log('admin')
-        this.router.navigate(['/admin'])
-      } else {
-        console.log('Not a Admin')
-      } 
-    })
-  }
-
   guestLogin() {
     this.authService.guestLoginService()
   }
@@ -37,6 +25,4 @@ export class LoginComponent {
   googleLogin() {
     this.authService.googleLoginService()
   }
-
-
 }
