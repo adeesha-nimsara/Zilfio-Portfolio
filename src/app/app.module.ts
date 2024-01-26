@@ -32,7 +32,7 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { LoadingSpinnerComponent } from './components/admin/loading-spinner/loading-spinner.component';
 import { AddNewProjectComponent } from './components/admin/projects-settings/add-new-project/add-new-project.component';
 import { LoginComponent } from './components/login/login.component';
-import { ContactComponent } from './components/container/contact/contact/contact.component';
+import { ContactComponent } from './components/container/contact/contact.component';
 
 @NgModule({
   declarations: [
