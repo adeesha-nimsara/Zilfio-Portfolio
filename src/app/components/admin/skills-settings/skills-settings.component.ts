@@ -13,6 +13,7 @@ export class SkillsSettingsComponent {
   skillData!: Observable<any>;
   imageUrl: string = '';
   uploadingValue: string = ''
+  showSubmit: boolean = false
 
   constructor(
     private storage: Storage = inject(Storage),
@@ -32,16 +33,20 @@ export class SkillsSettingsComponent {
     if (file) {
       const storageRef = ref(this.storage, 'skills/' + file.name)
       uploadBytesResumable(storageRef, file).on('state_changed', (snapshot) => {
+        this.showSubmit = true
         const value = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         this.uploadingValue = value.toString() + '%'
         console.log('upload is' + this.uploadingValue)
         this.cdr.detectChanges()
         if(this.uploadingValue === '100%'){
-          getDownloadURL(ref(storageRef)).then((url) => {
-            this.imageUrl = url
-            console.log(this.imageUrl)
-          })
+          setTimeout(()=>{
+            getDownloadURL(ref(storageRef)).then((url) => {
+              this.imageUrl = url
+              console.log(this.imageUrl)
+            })
+          }, 1000)
         }
+        this.showSubmit = false
       })
     }
   }
