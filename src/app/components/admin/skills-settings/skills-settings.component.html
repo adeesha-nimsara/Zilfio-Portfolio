@@ -2,8 +2,8 @@
 
     <form class="w-full md:w-6/12  mx-auto px-5" #f="ngForm" (ngSubmit)="addSkillData(f)">
         <div>
-            <label for="skill_name"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white w-full">Skill or Tool Name </label>
+            <label for="skill_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white w-full">Skill or
+                Tool Name </label>
             <div class="flex">
                 <span
                     class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
@@ -21,12 +21,16 @@
         <div class="py-5">
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="skill-image">Upload
                 file</label>
-            <input
+            <input *ngIf="!showSubmit"
                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                 (change)="onFileChange($event)" id="skill_image" type="file" name="skill_image">
+            <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700" *ngIf="showSubmit">
+                <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                    [ngStyle]="{'width': uploadingValue}"  >{{uploadingValue}}</div>
+            </div>
         </div>
-        <button type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+        <button type="submit" class="'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >Submit</button>
     </form>
 
 

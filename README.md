@@ -1,4 +1,5 @@
-# PortFolio
+# Zilfio - Empowering Portfolios with Angular and Firebase
+Are you ready to elevate your online presence? Introducing Zilfio, a dynamic portfolio application meticulously crafted with Angular and Firebase, designed to redefine the way you showcase your work.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
 

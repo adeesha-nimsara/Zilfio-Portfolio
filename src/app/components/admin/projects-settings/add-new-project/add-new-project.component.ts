@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-new-project.component.sass']
 })
 
+/* The AddNewProjectComponent class is responsible for adding new projects to a Firestore database,
+including uploading an image and adding tags. */
 export class AddNewProjectComponent {
   imageUrl: string = ''
   uploadingValue: string = '0%'
@@ -29,6 +31,8 @@ export class AddNewProjectComponent {
     addDoc(collectionInstance, dataToSave).then(() => {
       console.log(this.imageUrl);
       f.resetForm();
+      this.tags = [""]
+      this.uploadingValue = "0%"
       this.router.navigate(['/admin/projects']);
     }).catch((err) => {
       console.log(err);
