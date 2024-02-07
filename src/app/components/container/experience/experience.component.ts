@@ -26,6 +26,5 @@ export class ExperienceComponent {
     const collectionInstance = collection(this.firestore, 'experiance');
     const q = query(collectionInstance, orderBy('order', 'desc'));
     this.experianceData = await collectionData(q, { idField: 'id' });
-    console.log(this.experianceData);
   }
 }
