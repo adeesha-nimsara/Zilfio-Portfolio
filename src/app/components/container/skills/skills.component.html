@@ -22,7 +22,7 @@
         <div *ngFor="let data of skillData |async"
             class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5">
             <div class="flex flex-col items-center">
-                <img class="w-24 h-24 mb-3 shadow-lg" [src]="sanitizeUrl(data.imageUrl)" alt="Bonnie image" />
+                <img class="w-24 h-24 mb-3" [src]="sanitizeUrl(data.imageUrl)" alt="Bonnie image" />
                 <h5 class="mb-1 text-sm font-medium text-gray-900 dark:text-white">{{ data.skill_name }}</h5>
             </div>
         </div>
