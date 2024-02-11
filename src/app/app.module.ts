@@ -33,6 +33,7 @@ import { LoadingSpinnerComponent } from './components/admin/loading-spinner/load
 import { AddNewProjectComponent } from './components/admin/projects-settings/add-new-project/add-new-project.component';
 import { LoginComponent } from './components/login/login.component';
 import { ContactComponent } from './components/container/contact/contact.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ContactComponent } from './components/container/contact/contact.compone
     LoadingSpinnerComponent,
     AddNewProjectComponent,
     LoginComponent,
-    ContactComponent
+    ContactComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
