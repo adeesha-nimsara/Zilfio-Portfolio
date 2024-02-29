@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, doc, deleteDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, orderBy, query } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
@@ -19,7 +19,8 @@ export class SkillsComponent {
 
   getData() {
     const collectionInstance = collection(this.firestore, 'skills');
-    this.skillData = collectionData(collectionInstance, { idField: 'id' });
+    const q = query(collectionInstance, orderBy('createdAt'))
+    this.skillData = collectionData(q, { idField: 'id' });
   }
 
   sanitizeUrl(url: string): SafeUrl {

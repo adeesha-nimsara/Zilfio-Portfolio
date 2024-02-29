@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, orderBy, query } from '@angular/fire/firestore';
 import { SafeUrl, DomSanitizer } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 
@@ -22,8 +22,9 @@ export class ExperienceComponent {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 
-  getData() {
+  async getData() {
     const collectionInstance = collection(this.firestore, 'experiance');
-    this.experianceData = collectionData(collectionInstance, { idField: 'id' });
+    const q = query(collectionInstance, orderBy('order', 'desc'));
+    this.experianceData = await collectionData(q, { idField: 'id' });
   }
 }

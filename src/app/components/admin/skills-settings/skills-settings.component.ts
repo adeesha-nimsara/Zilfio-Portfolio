@@ -1,6 +1,6 @@
 import { Component, inject, ChangeDetectorRef } from '@angular/core';
 import { Storage, getDownloadURL, ref, uploadBytesResumable } from '@angular/fire/storage';
-import { Firestore, collection, addDoc, collectionData, doc, deleteDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, serverTimestamp, orderBy, query } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
@@ -53,7 +53,7 @@ export class SkillsSettingsComponent {
 
   addSkillData(f: any) {
     const collectionInstance = collection(this.firestore, 'skills');
-    const dataToSave = { ...f.value, imageUrl: this.imageUrl }
+    const dataToSave = { ...f.value, imageUrl: this.imageUrl, createdAt: serverTimestamp()}
     addDoc(collectionInstance, dataToSave).then(() => {
       console.log(this.imageUrl);
     }).catch((err) => {
@@ -63,7 +63,8 @@ export class SkillsSettingsComponent {
 
   getSkillData() {
     const collectionInstance = collection(this.firestore, 'skills');
-    this.skillData = collectionData(collectionInstance, { idField: 'id' });
+    const q = query(collectionInstance, orderBy('createdAt'))
+    this.skillData = collectionData(q, { idField: 'id'});
   }
 
   deleteSkillData(id: string) {
